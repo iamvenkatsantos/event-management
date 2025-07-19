@@ -1,28 +1,29 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, { useEffect } from 'react';
+import { StatusBar } from 'react-native';
+import { Provider as ReduxProvider } from 'react-redux';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import AppLoader from './src/components/loader';
+import ToastHandler from './src/components/toast';
+import AppNavigator from './src/navigation/main';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+import { store } from './src/redux/store';
+
+import './src/common/global';
+import Translation from './src/translation';
+
+function App(): React.JSX.Element {
+  useEffect(() => {
+    Translation.initializeTranslation();
+  }, []);
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
+    <ReduxProvider store={store}>
+      <StatusBar barStyle="dark-content" />
+      <AppNavigator />
+      <AppLoader />
+      <ToastHandler />
+    </ReduxProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
