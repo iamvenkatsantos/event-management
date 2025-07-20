@@ -4,7 +4,7 @@ import { colors } from "../../../styles";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.primary,
     paddingHorizontal: 30,
     justifyContent: 'center',
     alignItems: 'center',
@@ -31,19 +31,19 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: 50,
     borderRadius: 25,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.background,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
   },
   loginButtonText: {
-    color: colors.onPrimary,
+    color: colors.primary,
     fontSize: 18,
     fontWeight: 'bold',
   },
   orText: {
     fontSize: 14,
-    color: colors.onBackground,
+    color: colors.background,
     marginBottom: 10,
   },
   logoRow: {

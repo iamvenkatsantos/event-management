@@ -7,6 +7,7 @@ import useLoginViewModal from './useLoginViewModal';
 
 import { styles } from './LoginStyle';
 import images from '../../../assets/images';
+import { colors } from '../../../styles';
 
 export default function LoginView() {
 
@@ -33,6 +34,7 @@ export default function LoginView() {
         value={username}
         onChangeText={setUsername}
         style={styles.input}
+        placeholderTextColor={colors.onBackground}
       />
 
       <TextInput
@@ -41,6 +43,7 @@ export default function LoginView() {
         value={password}
         onChangeText={setPassword}
         style={styles.input}
+        placeholderTextColor={colors.onBackground}
       />
 
       <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
