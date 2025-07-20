@@ -18,7 +18,7 @@ function App(): React.JSX.Element {
 
   return (
     <ReduxProvider store={store}>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="default" />
       <AppNavigator />
       <AppLoader />
       <ToastHandler />

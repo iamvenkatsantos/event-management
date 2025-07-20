@@ -32,7 +32,7 @@ const AppBarHeader = <T extends AllScreens>({
   };
 
   const handleMenu = () => {
-    if (isDrawerOpen) {
+    if (isDrawerOpen && navigation) {
       navigation.dispatch(DrawerActions.closeDrawer());
     } else {
       navigation.dispatch(DrawerActions.openDrawer());
@@ -42,13 +42,13 @@ const AppBarHeader = <T extends AllScreens>({
   return (
     <Appbar.Header style={styles.header}>
       {showBack ? (
-        <Appbar.BackAction color={colors.background} onPress={handleBack} />
+        <Appbar.BackAction color={colors.primary} onPress={handleBack} />
       ) : showMenu ? (
         <Appbar.Action icon="menu" color={colors.background} onPress={handleMenu} />
       ) : null}
       <Appbar.Content title={title ?? ''} titleStyle={styles.title} />
       {onLogout && (
-        <Appbar.Action icon="logout" onPress={onLogout} />
+        <Appbar.Action icon="logout"  onPress={onLogout} />
       )}
     </Appbar.Header>
   );
@@ -56,13 +56,13 @@ const AppBarHeader = <T extends AllScreens>({
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.background,
     elevation: 4,
     shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 2 },
   },
   title: {
-    color: colors.background,
+    color: colors.onBackground,
   },
 });
 
