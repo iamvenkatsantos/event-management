@@ -38,36 +38,33 @@ const MapScreen = (props: EventMapNavigationProp) => {
   useEffect(() => {
     if (props.route.params.selectedEvent?.latitude && props.route.params.selectedEvent?.longitude) {
       const newRegion = {
-        latitude: selectedEvent.latitude,
-        longitude: selectedEvent.longitude,
+        latitude: props.route.params.selectedEvent.latitude,
+        longitude: props.route.params.selectedEvent.longitude,
         latitudeDelta: 0.04,
         longitudeDelta: 0.04,
       };
       setMapRegion(newRegion);
-      mapRef.current?.animateToRegion(newRegion, 1000); // smooth transition
+      if (mapRef.current) {
+        mapRef.current?.animateToRegion(newRegion, 1000); // smooth transition
+      }
     }
-  }, [props.route.params, selectedEvent.latitude, selectedEvent.longitude]);
+  }, [props.route.params.selectedEvent]);
 
   return (
     <View style={styles.container}>
       <AppBarHeader navigation={navigation} title='Event Map' showBack showMenu={false} />
-      {selectedEvent &&
-        (
-          <MapView
-            key={selectedEvent?.id ? `${mapRegion.latitude}-${mapRegion.longitude}` : "map_key"}
-            ref={mapRef} style={styles.mapStyle} region={mapRegion}>
-            <Marker
-              coordinate={{ latitude: mapRegion.latitude, longitude: mapRegion.longitude }}
-              pinColor="red"
-              title={name ?? "Event Name"}
-              description={address ?? "No address provided"}
-            />
-          </MapView>
-        )
-      }
+      <MapView
+        key={"map_key"}
+        ref={mapRef} style={styles.mapStyle} region={mapRegion}>
+        <Marker
+          coordinate={{ latitude: mapRegion.latitude, longitude: mapRegion.longitude }}
+          pinColor="red"
+          title={name ?? "Event Name"}
+          description={address ?? "No address provided"}
+        />
+      </MapView>
     </View>
   );
-
 };
 
 const styles = StyleSheet.create({
