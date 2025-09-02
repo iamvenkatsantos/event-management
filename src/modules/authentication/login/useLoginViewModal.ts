@@ -6,10 +6,10 @@ function useLoginViewModal() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const navigation: NavigationProp<"AuthStack"> = useNavigation();
+  const navigation: NavigationProp<"Login"> = useNavigation();
 
   const handleLogin = () => {
-    navigation.navigate("DrawerStack");
+    navigation.navigate("EventList");
   };
 
   const socialMediaImage: Record<string, string> = {

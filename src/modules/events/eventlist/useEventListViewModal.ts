@@ -75,7 +75,7 @@ const useEventListViewModal = () => {
 
   const handleEventPress = useCallback((item: any) => {
     console.log("Selected Event:", item);
-    navigation.navigate('EventMap', { selectedEvent: item });
+    navigation.navigate('EventDetails', { eventId: item.id });
   }, [navigation])
 
   return {

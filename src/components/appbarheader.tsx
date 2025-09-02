@@ -1,9 +1,9 @@
 import React from 'react';
 import { Appbar } from 'react-native-paper';
-import { DrawerActions } from '@react-navigation/native';
+// import { DrawerActions } from '@react-navigation/native';
 import type { AllScreens, NavigationProp } from '../navigation/main';
 import { BackHandler, StyleSheet } from 'react-native';
-import { useDrawerStatus } from '@react-navigation/drawer';
+// import { useDrawerStatus } from '@react-navigation/drawer';
 import { colors } from '../styles';
 
 type AppBarHeaderProps<T extends AllScreens> = {
@@ -21,7 +21,7 @@ const AppBarHeader = <T extends AllScreens>({
   onLogout,
   navigation,
 }: AppBarHeaderProps<T>) => {
-  const isDrawerOpen = useDrawerStatus() === 'open';
+  // const isDrawerOpen = useDrawerStatus() === 'open';
 
   const handleBack = () => {
     if (navigation.canGoBack()) {
@@ -32,11 +32,11 @@ const AppBarHeader = <T extends AllScreens>({
   };
 
   const handleMenu = () => {
-    if (isDrawerOpen && navigation) {
-      navigation.dispatch(DrawerActions.closeDrawer());
-    } else {
-      navigation.dispatch(DrawerActions.openDrawer());
-    }
+    // if (isDrawerOpen && navigation) {
+    //   navigation.dispatch(DrawerActions.closeDrawer());
+    // } else {
+    //   navigation.dispatch(DrawerActions.openDrawer());
+    // }
   };
 
   return (
