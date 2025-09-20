@@ -36,7 +36,7 @@ export const getAsyncData = (key: string): Promise<any> => {
             resolve(response);
           }
         } else {
-          reject(translate('key_not_foud'));
+          reject(translate('key_not_found'));
         }
       })
       .catch((err: any) => {

@@ -29,7 +29,6 @@ export type StackParamList = {
   TicketBooking: { eventDetails: IEventDetails; selectedTiers: ITicketTier[] };
   PaymentBreakdown: { bookingItems: IBookingItem[]; eventDetails: IEventDetails };
   PaymentSuccess: undefined;
-  AuthStack: undefined;
   BookingSummary: { bookingId: string };
 }
 
@@ -46,19 +45,12 @@ const Stack = createStackNavigator<StackParamList>();
 //   );
 // };
 
-const AuthenticationStack = () => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="Login" component={LoginScreen} />
-  </Stack.Navigator>
-);
-
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Login">
+        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Loader" component={LoaderScreen} />
-        <Stack.Screen name="AuthStack" component={AuthenticationStack} />
-        {/* <Stack.Screen name="DrawerStack" component={DrawerNavigator} /> */}
         <Stack.Screen name="EventList" component={EventListScreen} />
         <Stack.Screen name="EventMap" component={EventMapScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
